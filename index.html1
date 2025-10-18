@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Based Wilson's Disease Diagnosis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #0077cc;
+      color: white;
+      padding: 10px 15px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    #results {
+      margin-top: 30px;
+      background: #e6f2ff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Wilson's Disease Diagnosis System</h1>
+  </header>
+
+  <main>
+    <form id="diagnosisForm">
+      <h2>Enter Patient Information</h2>
+
+      <label for="name">Patient Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">-- Select Gender --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <label for="ceruloplasmin">Serum Ceruloplasmin (mg/dL)</label>
+      <input type="number" id="ceruloplasmin" name="ceruloplasmin" step="0.1" required>
+
+      <label for="copper">Serum Copper (µg/dL)</label>
+      <input type="number" id="copper" name="copper" step="0.1" required>
+
+      <label for="liverFunction">Liver Function Tests (ALT/AST levels)</label>
+      <input type="number" id="liverFunction" name="liverFunction" step="0.1" required>
+
+      <label for="symptoms">Neurological Symptoms</label>
+      <textarea id="symptoms" name="symptoms" placeholder="E.g., tremors, dystonia, speech issues..."></textarea>
+
+      <button type="submit">Get Diagnosis</button>
+    </form>
+
+    <div id="results" hidden>
+      <h2>Diagnosis Result</h2>
+      <p id="diagnosisText">Diagnosis will appear here.</p>
+      <h3>Explanation</h3>
+      <p id="explanationText">Feature importance and SHAP output will appear here.</p>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('diagnosisForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Collect form data (in practice, you'd send this to a backend)
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      const cerulo = document.getElementById('ceruloplasmin').value;
+      const copper = document.getElementById('copper').value;
+      const liver = document.getElementById('liverFunction').value;
+      const symptoms = document.getElementById('symptoms').value;
+
+      // Placeholder: show dummy results
+      document.getElementById('diagnosisText').innerText = "Likely Positive for Wilson's Disease";
+      document.getElementById('explanationText').innerText = "High importance of low ceruloplasmin and neurological symptoms.";
+      document.getElementById('results').hidden = false;
+    });
+  </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Based Wilson's Disease Diagnosis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #0077cc;
+      color: white;
+      padding: 10px 15px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    #results {
+      margin-top: 30px;
+      background: #e6f2ff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Wilson's Disease Diagnosis System</h1>
+  </header>
+
+  <main>
+    <form id="diagnosisForm">
+      <h2>Enter Patient Information</h2>
+
+      <label for="name">Patient Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" name="age" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">-- Select Gender --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+
+      <label for="ceruloplasmin">Serum Ceruloplasmin (mg/dL)</label>
+      <input type="number" id="ceruloplasmin" name="ceruloplasmin" step="0.1" required>
+
+      <label for="copper">Serum Copper (µg/dL)</label>
+      <input type="number" id="copper" name="copper" step="0.1" required>
+
+      <label for="liverFunction">Liver Function Tests (ALT/AST levels)</label>
+      <input type="number" id="liverFunction" name="liverFunction" step="0.1" required>
+
+      <label for="symptoms">Neurological Symptoms</label>
+      <textarea id="symptoms" name="symptoms" placeholder="E.g., tremors, dystonia, speech issues..."></textarea>
+
+      <button type="submit">Get Diagnosis</button>
+    </form>
+
+    <div id="results" hidden>
+      <h2>Diagnosis Result</h2>
+      <p id="diagnosisText">Diagnosis will appear here.</p>
+      <h3>Explanation</h3>
+      <p id="explanationText">Feature importance and SHAP output will appear here.</p>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('diagnosisForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Collect form data (in practice, you'd send this to a backend)
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      const cerulo = document.getElementById('ceruloplasmin').value;
+      const copper = document.getElementById('copper').value;
+      const liver = document.getElementById('liverFunction').value;
+      const symptoms = document.getElementById('symptoms').value;
+
+      // Placeholder: show dummy results
+      document.getElementById('diagnosisText').innerText = "Likely Positive for Wilson's Disease";
+      document.getElementById('explanationText').innerText = "High importance of low ceruloplasmin and neurological symptoms.";
+      document.getElementById('results').hidden = false;
+    });
+  </script>
+
+</body>
+</html>
